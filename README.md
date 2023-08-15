@@ -6,3 +6,17 @@
   - Handle Success View
   - Handle Failure View
   - Handle Loading View
+
+### Non Prime Users
+
+```
+Username: raja
+password: raja@2021
+```
+
+### Prime Users
+
+```
+Username: rahul
+password: rahul@2021
+```
