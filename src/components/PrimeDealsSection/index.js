@@ -8,7 +8,7 @@ import './index.css'
 const apiStatusConstants = {
   initial: '',
   success: 'SUCCESS',
-  falure: 'FALURE',
+  failure: 'FALURE',
   inProgress: 'IN_PROGRESS',
 }
 
@@ -23,6 +23,9 @@ class PrimeDealsSection extends Component {
   }
 
   getPrimeDeals = async () => {
+    this.setState({
+      apiStatus: apiStatusConstants.inProgress,
+    })
     const jwtToken = Cookies.get('jwt_token')
 
     const apiUrl = 'https://apis.ccbp.in/prime-deals'
@@ -46,6 +49,11 @@ class PrimeDealsSection extends Component {
       this.setState({
         primeDeals: updatedData,
         apiStatus: apiStatusConstants.success,
+      })
+    }
+    if (response.status === 401) {
+      this.setState({
+        apiStatus: apiStatusConstants.failure,
       })
     }
   }
@@ -84,15 +92,13 @@ class PrimeDealsSection extends Component {
     switch (apiStatus) {
       case apiStatusConstants.success:
         return this.renderPrimeDealsList()
-      case apiStatusConstants.falure:
+      case apiStatusConstants.failure:
         return this.renderPrimeDealsFailureView()
       case apiStatusConstants.inProgress:
         return this.renderLoadingView()
       default:
         return null
     }
-
-    // return this.renderLoadingView()
   }
 }
 
