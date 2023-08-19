@@ -95,31 +95,43 @@ class LoginForm extends Component {
       return <Redirect to="/" />
     }
     return (
-      <div className="login-form-container">
-        <img
-          src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png"
-          className="login-website-logo-mobile-image"
-          alt="website logo"
-        />
-        <img
-          src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-login-img.png"
-          className="login-image"
-          alt="website login"
-        />
-        <form className="form-container" onSubmit={this.submitForm}>
+      <>
+        <div className="login-form-container">
           <img
             src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png"
-            className="login-website-logo-desktop-image"
+            className="login-website-logo-mobile-image"
             alt="website logo"
           />
-          <div className="input-container">{this.renderUsernameField()}</div>
-          <div className="input-container">{this.renderPasswordField()}</div>
-          <button type="submit" className="login-button">
-            Login
-          </button>
-          {showSubmitError && <p className="error-message">*{errorMsg}</p>}
-        </form>
-      </div>
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-login-img.png"
+            className="login-image"
+            alt="website login"
+          />
+          <div>
+            <form className="form-container" onSubmit={this.submitForm}>
+              <img
+                src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png"
+                className="login-website-logo-desktop-image"
+                alt="website logo"
+              />
+              <div className="input-container">
+                {this.renderUsernameField()}
+              </div>
+              <div className="input-container">
+                {this.renderPasswordField()}
+              </div>
+              <button type="submit" className="login-button">
+                Login
+              </button>
+              {showSubmitError && <p className="error-message">*{errorMsg}</p>}
+            </form>
+            <footer className="login-info">
+              Prime user : Username: rahul , password: rahul@2021 <br /> <br />{' '}
+              Non-Prime user : Username: raja ,password: raja@2021
+            </footer>
+          </div>
+        </div>
+      </>
     )
   }
 }
